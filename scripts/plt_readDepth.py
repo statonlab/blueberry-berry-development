@@ -25,7 +25,6 @@ y2 = data2['depth'].values
 #axs[1].set(xlabel='position',ylabel='read depth')
 
 
-fig, ax = plt.subplots(1,1)
 sns.distplot(y1, hist=False)
 sns.distplot(y2, hist=False)
 plt.xlabel('Read depth')
