@@ -6,21 +6,27 @@ if os.environ.get('DISPLAY','') == '':
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from scipy.stats import gaussian_kde
 import sys
 file1 = sys.argv[1]
 file2 = sys.argv[2]
 
 data1 = pd.read_table(file1, sep='\t', names=['chr','pos','depth'])
 data2 = pd.read_table(file2, sep='\t', names=['chr','pos','depth'])
-x1 = data1['pos'].values
-y1 = data1['depth'].values
-x2 = data2['pos'].values
-y2 = data2['depth'].values
+#x1 = data1['pos'].values
+#y1 = data1['depth'].values
+#x2 = data2['pos'].values
+#y2 = data2['depth'].values
 
-fig,axs = plt.subplots(2)
-axs[0].plot(x1,y1)
-axs[0].set(ylabel='read depth')
-axs[1].plot(x2,y2)
-axs[1].set(xlabel='position',ylabel='read depth')
+#fig,axs = plt.subplots(2)
+#axs[0].plot(x1,y1)
+#axs[0].set(ylabel='read depth')
+#axs[1].plot(x2,y2)
+#axs[1].set(xlabel='position',ylabel='read depth')
 
-plt.savefig("lines.png")
+#plt.savefig("lines.png")
+
+fig, ax = plt.subplots(1,1)
+data1['depth'].plot(kind='density')
+data2['depth'].plot(kine='density')
+plt.savefig('read.depth.density.pdf')
