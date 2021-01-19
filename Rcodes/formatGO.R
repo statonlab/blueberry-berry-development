@@ -8,3 +8,11 @@ anno.BP$GO <- gsub("GO:|\\-.*","",anno.BP$GO)
 anno.BP$GO <- as.numeric(anno.BP$GO)
 write.table(anno.BP, file="../results/go_BP_anno.txt", sep = " = ", quote = F , row.names = F, col.names = F)
 length(intersect(anno.BP$locus, rownames(mydata)))
+
+# GO and KEGG stats
+GO_table <- read.csv("../results/annotations_GO.tsv", na.strings=c("", "NA"), header = T, sep = "\t")
+
+length(na.omit(GO_table$EggNOG.KEGG.Terms))
+length(na.omit(GO_table$EggNOG.GO.Biological))
+length(na.omit(GO_table$EggNOG.GO.Cellular))
+length(na.omit(GO_table$EggNOG.GO.Molecular))
