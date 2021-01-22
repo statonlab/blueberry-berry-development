@@ -62,6 +62,6 @@ EPvR_sig <- read.csv("../results/DE_EPvsR.csv", header = T)
 select <- rownames(vsd) %in% intersect(GO_ros$Query.Sequence, c(GvR_sig$X,GvLP_sig$X,LPvR_sig$X,GvEP_sig$X))
 data <- assay(vsd_ordered)[select,]
 rownames(data) <- GO_ros$EggNOG.Description[GO_ros$Query.Sequence %in% intersect(GO_ros$Query.Sequence, c(GvR_sig$X,GvLP_sig$X,LPvR_sig$X,GvEP_sig$X))]
-pheatmap(data, filename = "../img/ROS_heatmap.pdf", width = 5, height = 5,
+pheatmap(data, filename = "../img/ROS_heatmap_scaled.pdf", width = 5, height = 5,scale = "row",
          cluster_rows=T, show_rownames=F,show_colnames = F,
          cluster_cols=F, annotation_col=df[,-2, drop=F],border_color=F, annotation_colors = ann_colors[1])

@@ -32,3 +32,4 @@ filtered_ME14 <- ME14[ME14$fromNode %in% all_DE,]
 write.table(filtered_ME14, "../results/Cytoscape_ME14_filtered.txt", quote = F, row.names = F, sep = "\t")
 
 length(unique(filtered_ME14$fromNode))
+length(unique(ME11$fromNode))
