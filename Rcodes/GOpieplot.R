@@ -22,7 +22,7 @@ df.data$Freq <- as.numeric(df.data$Freq)
 df.data$pct <- round(df.data$Freq/sum(df.data$Freq), 4) * 100
 df.data$Var1 <- gsub("GO:\\d+\\-|\\(L=1)","",df.data$Var1)
 df.data <- df.data[order(df.data$Freq),]
-df.data$Var1 <- paste0(df.data$Var1," (",df.data$pct,"%)")
+df.data$Var1 <- paste0(df.data$Var1," (",df.data$Freq,")")
 df.data$Var1 <- factor(df.data$Var1, levels = df.data$Var1)
 
 indplot<-ggplot(df.data,aes(x = "",y=Freq, fill = Var1))+ geom_bar(width = 1,stat="identity")+  
