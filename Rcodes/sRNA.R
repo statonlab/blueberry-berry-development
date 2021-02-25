@@ -76,9 +76,9 @@ clusters_cate <- join(clusters_cate, length_N, by = "Var1", type = "full")
 library(reshape2)
 data <- melt(clusters_cate)
 data$Var1 <- factor(data$Var1, levels = c("miRNA","rRNA","snoRNA","splicing","tRNA","other","ta-siRNA"))
-ggplot(data, aes(fill=Var1, y=value, x=variable)) + 
-  geom_bar(position="stack", stat="identity") + theme_classic()+
-  labs(x= "size", y = "Number of clusters", fill='Category') +
+ggplot(data, aes(y=value, x=variable)) + 
+  geom_bar(position="stack", stat="identity") + theme_classic(base_size = 14)+
+  labs(x= "size", y = "Number of clusters") +
   scale_fill_brewer(palette="Dark2")
 ggsave("../img/Hap2_sRNA_dist.pdf")
 

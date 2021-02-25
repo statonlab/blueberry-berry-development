@@ -33,14 +33,14 @@ vsd_ordered <- vsd[,c(paste0("S",1:6), "S7","S12", paste0("S",8:11),paste0("S",1
 select <- rownames(vsd) %in% antho_RBH$V2
 data <- assay(vsd_ordered)[select,]
 rownames(data) <- antho_RBH[order(antho_RBH$V2),]$Homolog
-pheatmap(data, filename = "../img/VcRbh_anthoGenes_heatmap.pdf", width = 10, height = 4,
-         cluster_rows=T, show_rownames=T,show_colnames = F,
+pheatmap(data, filename = "../img/VcRbh_anthoGenes_heatmap_scaled.pdf", width = 10, height = 4,
+         cluster_rows=T, show_rownames=T,show_colnames = F, scale = "row",
          cluster_cols=F, annotation_col=df[,-2, drop=F],border_color=F, annotation_colors = ann_colors[1])
 
 # plot anthocyanin TF genes
 select <- rownames(vsd) %in% antho_TF_RBH$V2
 data <- assay(vsd_ordered)[select,]
 rownames(data) <- antho_TF_RBH[order(antho_TF_RBH$V2),]$label
-pheatmap(data, filename = "../img/VcRbh_anthoTF_heatmap.pdf", width = 10, height = 3,
-         cluster_rows=T, show_rownames=T,show_colnames = F,
+pheatmap(data, filename = "../img/VcRbh_anthoTF_heatmap_scaled.pdf", width = 10, height = 3,
+         cluster_rows=T, show_rownames=T,show_colnames = F, scale="row",
          cluster_cols=F, annotation_col=df[,-2, drop=F],border_color=F, annotation_colors = ann_colors[1])

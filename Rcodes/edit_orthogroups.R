@@ -15,3 +15,7 @@ genes_all <- rbind(genes, Vd_genes[,3, drop=F])
 genes_all$ID <- gsub(" ","",genes_all$ID)
 
 write.table(genes_all,"../results/orthogroups/Vd_spec_genes.txt", row.names = F, col.names = F, quote = F)
+
+# RBH 18907 genes
+
+
