@@ -19,7 +19,7 @@ vsd_ordered <- vsd[,c(paste0("S",1:6), "S7","S12", paste0("S",8:11),paste0("S",1
 # plot anthocyanin biosynthesis genes
 select <- rownames(vsd) %in% Vd_CG_annot$ID
 data <- assay(vsd_ordered)[select,]
-rownames(data) <- Vd_CG_annot[order(Vd_CG_annot$ID),]$label
+rownames(data) <- paste0(Vd_CG_annot[order(Vd_CG_annot$ID),]$label,":VaDar_",Vd_CG_annot[order(Vd_CG_annot$ID),]$ID)
 pheatmap(data, filename = "../img/Vd_CG_heatmap_scaled.pdf", width = 10, height = 3,
          cluster_rows=T, show_rownames=T,show_colnames = F,scale = "row",
          cluster_cols=F, annotation_col=df[,-2, drop=F],border_color=F, annotation_colors = ann_colors[1])
