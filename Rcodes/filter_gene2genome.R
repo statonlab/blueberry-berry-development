@@ -29,3 +29,9 @@ write.table(matched_vdIDs,"../results/orthogroups/no_orthgroup_Vd_matched_VcGene
 unmatched_VdIDs <- unique(unmatch_Vd_genes[,2,drop=F])
 unmatched_VdIDs <- gsub("ID=","",unmatched_VdIDs$qseqid)
 write.table(unmatched_VdIDs,"../results/orthogroups/no_orthgroup_Vd_unmatched_VcGenes.txt", quote = F, row.names = F, col.names = F)
+
+# Vd-spec genes
+Vd_spec <- read.table("../results/orthogroups/Vd_spec_genes.txt", header = F, sep = "\t")
+primary_genes <- gsub("ID=","",Vd_spec[grep("ID=g",Vd_spec$V1),])
+Vd_spec_nonortho <- primary_genes[!(primary_genes %in% c(matched_vdIDs,unmatched_VdIDs))]
+write.table(Vd_spec_nonortho,"../results/orthogroups/Vd_spec_unmatched_Vcgenome.txt", quote = F,row.names = F, col.names = F)
