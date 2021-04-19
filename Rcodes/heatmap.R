@@ -56,6 +56,9 @@ pheatmap(data, filename = "../img/Flavo-antho_heatmap_scaled.pdf", width = 10, h
 # ROS genes
 GO_ros <- GO_anno[grep("GO:0006979",GO_anno$EggNOG.GO.Biological),]
 GO_ros <- GO_ros[-which(is.na(GO_ros$EggNOG.Description)),]
+intersect(GO_ros$Query.Sequence, ME14$nodeName)
+# genes in ME14
+ME14 <- read.table("../results/CytoscapeInput-nodes-ME14.txt", header = T, sep = "\t")
 # extract DEGs
 LPvR_sig <- read.csv("../results/DE_LvsR.csv", header = T)
 EPvR_sig <- read.csv("../results/DE_EPvsR.csv", header = T)
