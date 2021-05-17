@@ -1,2 +1,2 @@
 # blueberry-berry-development
-RNAseq analysis of _V. darrowii_
+Genome assembly and RNAseq analysis of _V. darrowii_
