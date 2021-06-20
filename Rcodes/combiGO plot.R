@@ -20,7 +20,7 @@ for (i in 1:7) {
 }
 
 BP[is.na(BP)] <- 1
-filterBP <- BP[rowSums(BP[,-c(1:2)]) < 7, level]
+filterBP <- BP[rowSums(BP[,-c(1:2)]) < 7, ]
 names(filterBP)[3:9] <- c("EPvLP_down","GvEP_up","GvLP_down","GvLP_up","GvR_down","GvR_up","LPvR_down")
 filterBP <- filterBP[c("description","SUID","GvEP_up","GvLP_up","GvR_up","GvLP_down","GvR_down","EPvLP_down","LPvR_down")]
 filterBP <- filterBP[order(filterBP$GvLP_up, decreasing = F),]

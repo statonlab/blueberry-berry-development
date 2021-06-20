@@ -20,6 +20,9 @@ antho_TF_RBH <- RBH[RBH$V1 %in% antho_TF$Genes,]
 antho_TF_RBH <- merge(antho_TF_RBH, antho_TF, by.x = "V1", by.y = "Genes", all.x=T)
 antho_TF_RBH$V2 <- gsub("ID=","",antho_TF_RBH$V2)
 
+write.csv(antho_TF_RBH, "../results/Antho_TF_Vc2Vd.csv", row.names = F)
+write.csv(antho_RBH, "../results/Antho_gene_Vc2Vd.csv", row.names = F)
+
 # Obtain dds from DESeq2.R
 # get the transformed gene matrix
 ann_colors = list(
@@ -33,7 +36,7 @@ vsd_ordered <- vsd[,c(paste0("S",1:6), "S7","S12", paste0("S",8:11),paste0("S",1
 select <- rownames(vsd) %in% antho_RBH$V2
 data <- assay(vsd_ordered)[select,]
 rownames(data) <- antho_RBH[order(antho_RBH$V2),]$Homolog
-pheatmap(data, filename = "../img/VcRbh_anthoGenes_heatmap_scaled.pdf", width = 10, height = 4,
+pheatmap(data, filename = "../img/VcRbh_anthoGenes_heatmap_scaled_GeneName.pdf", width = 10, height = 4,
          cluster_rows=T, show_rownames=T,show_colnames = F, scale = "row",
          cluster_cols=F, annotation_col=df[,-2, drop=F],border_color=F, annotation_colors = ann_colors[1])
 
@@ -41,6 +44,6 @@ pheatmap(data, filename = "../img/VcRbh_anthoGenes_heatmap_scaled.pdf", width = 
 select <- rownames(vsd) %in% antho_TF_RBH$V2
 data <- assay(vsd_ordered)[select,]
 rownames(data) <- antho_TF_RBH[order(antho_TF_RBH$V2),]$label
-pheatmap(data, filename = "../img/VcRbh_anthoTF_heatmap_scaled.pdf", width = 10, height = 3,
-         cluster_rows=T, show_rownames=T,show_colnames = F, scale="row",
+pheatmap(data, filename = "../img/VcRbh_anthoTF_heatmap_GeneName.pdf", width = 10, height = 3,
+         cluster_rows=T, show_rownames=T,show_colnames = F, 
          cluster_cols=F, annotation_col=df[,-2, drop=F],border_color=F, annotation_colors = ann_colors[1])
