@@ -4,6 +4,7 @@ Usage python add_asterisk_stop_codon.py <input fasta> <output fasta>
 import sys
 from Bio.Seq import Seq
 from Bio import SeqIO
+from Bio.SeqRecord import SeqRecord
 
 fasta_in = sys.argv[1]
 fasta_out = sys.argv[2]
